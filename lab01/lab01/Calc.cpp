@@ -13,30 +13,22 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	cout << "Какое действие вы будите выполнять?" << endl << "1. +" << endl << "2. -" << endl << "3. *" << endl << "4. /" << endl << "5. a в степени b" << endl << "6. b корней из a" << endl << "7. Loga(b)" << endl << "Ваш ответ: ";
-	while (!(cin >> act)) {
+	cout << "Какое действие вы будете выполнять?" << endl << "1. +" << endl << "2. -" << endl << "3. *" << endl << "4. /" << endl << "5. a в степени b" << endl << "6. b корней из a" << endl << "7. Loga(b)" << endl << "Ваш ответ: ";
+	while (!(cin >> act) || (cin.get() != '\n') || (act < 1) || (act > 7)) {
 		cin.clear();
-		while (cin.get() != '\n');
 		cout << "Вам необходимо ввести число от 1 до 7." << endl << endl;
-	}
-
-	if ((act < 1) || (act > 7)) {
-		cout << "Вам необходимо ввести число от 1 до 7." << endl << endl;
-		main();
 	}
 
 	cout << endl << "Введите числа." << endl << "Число a: ";
-	while (!(cin >> a)) {
+	while (!(cin >> a) || (cin.get() != '\n')) {
 		cin.clear();
-		while (cin.get() != '\n');
-		cout << "Необходимо ввести число." << endl << endl;
+		cout << "Необходимо ввести число." << endl << "Число a: ";
 	}
 
 	cout << "Число b: ";
-	while (!(cin >> b)) {
+	while (!(cin >> b) || (cin.get() != '\n')) {
 		cin.clear();
-		while (cin.get() != '\n');
-		cout << "Необходимо ввести число." << endl << endl;
+		cout << "Необходимо ввести число." << endl << "Число b: ";
 	}
 
 	Calc();
@@ -72,6 +64,7 @@ void Calc()
 	}
 
 	cout << "Результат = " << result << endl << endl;
+
 	CalcEnd();
 }
 
@@ -79,9 +72,8 @@ void CalcEnd()
 {
 	cout << "Хотите ли вы повторить?" << endl << "1. Да" << endl << "2. Нет" << endl << endl;
 	int repeat = 0;
-	while (!(cin >> repeat)) {
+	while (!(cin >> repeat) || (cin.get() != '\n') || (repeat < 1) || (repeat > 2)); {
 		cin.clear();
-		while (cin.get() != '\n');
 		cout << "Вам необходимо ввести '1' или '2'." << endl << endl;
 	}
 
@@ -91,8 +83,7 @@ void CalcEnd()
 		break;
 	case 2:
 		break;
-	default:
-		cout << "Вам необходимо ввести '1' или '2'." << endl << endl;
+
 		CalcEnd();
 	}
 }
